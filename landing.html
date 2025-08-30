@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Disaster Crowdsource Platform</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background: #f7f9fc;
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #0052cc;
+      color: #fff;
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: #fff;
+      margin-left: 2rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #ffe600;
+    }
+
+    main {
+      flex-grow: 1;
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding-bottom: 4rem;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .hero h2 {
+      font-size: 2.8rem;
+      color: #0052cc;
+      margin-bottom: 1rem;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: #444;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-primary {
+      background: #ff5722;
+      color: #fff;
+      padding: 1rem 2.5rem;
+      font-size: 1.15rem;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      font-weight: 700;
+      box-shadow: 0 6px 12px rgba(255, 87, 34, 0.4);
+      transition: background 0.3s ease, transform 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: #e64a19;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 16px rgba(230, 74, 25, 0.5);
+    }
+
+    /* How it works */
+    .how-it-works {
+      margin-top: 4rem;
+      text-align: center;
+    }
+
+    .how-it-works h3 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #0052cc;
+      font-weight: 700;
+    }
+
+    .steps {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .step {
+      background: #fff;
+      padding: 2rem 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+      max-width: 280px;
+      flex: 1;
+      transition: transform 0.3s ease;
+    }
+
+    .step:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgb(0 0 0 / 0.15);
+    }
+
+    .step-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #ff5722;
+    }
+
+    .step-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: #222;
+    }
+
+    .step-desc {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.4;
+    }
+
+    /* Features Section */
+    .features {
+      margin-top: 5rem;
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .feature {
+      background: #0052cc;
+      color: white;
+      flex: 1 1 280px;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 6px 16px rgb(0 82 204 / 0.3);
+      transition: background 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .feature:hover {
+      background: #003d99;
+    }
+
+    .feature-icon {
+      font-size: 3.5rem;
+      margin-bottom: 1.2rem;
+      color: #ffcc80;
+    }
+
+    .feature-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .feature-desc {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    /* Report Section */
+    .report-section {
+      margin-top: 5rem;
+      background: #ff5722;
+      padding: 3rem 2rem;
+      border-radius: 20px;
+      text-align: center;
+      color: white;
+      box-shadow: 0 8px 20px rgba(255, 87, 34, 0.4);
+    }
+
+    .report-section h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .report-section p {
+      margin-bottom: 2rem;
+      font-size: 1.15rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.4;
+    }
+
+    .report-btn {
+      background: white;
+      color: #ff5722;
+      padding: 1rem 2.5rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border-radius: 40px;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 6px 12px rgba(255, 87, 34, 0.4);
+      transition: background 0.3s ease, color 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .report-btn:hover {
+      background: #ffe6dc;
+      color: #d84315;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem 2rem;
+      background: #222;
+      color: #aaa;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .steps {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .features {
+        flex-direction: column;
+        gap: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>DisasterWatch</h1>
+  <nav>
+    <a href="#how-it-works">How It Works</a>
+    <a href="#features">Features</a>
+    <a href="#report">Report Incident</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <h2>Empower Communities. Report Disasters. Save Lives.</h2>
+    <p>Join our crowdsourced platform to instantly report and track disaster incidents, helping emergency responders act faster and save more lives.</p>
+    <a href="#report" class="btn-primary">Report an Incident</a>
+  </section>
+
+  <section id="how-it-works" class="how-it-works">
+    <h3>How It Works</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="step-icon">📱</div>
+        <div class="step-title">Report Easily</div>
+        <div class="step-desc">Use our platform to quickly submit incident reports with location and details.</div>
+      </div>
+      <div class="step">
+        <div class="step-icon">🌐</div>
+        <div class="step-title">Crowd Verified</div>
+        <div class="step-desc">Community members verify incidents to ensure accuracy and relevance.</div>
+      </div>
+      <div class="step">
+        <div class="step-icon">🚑</div>
+        <div class="step-title">Swift Response</div>
+        <div class="step-desc">Authorities get notified instantly to provide timely assistance.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="features">
+    <div class="feature">
+      <div class="feature-icon">🗺️</div>
+      <div class="feature-title">Real-time Mapping</div>
+      <div class="feature-desc">View live disaster reports on interactive maps to stay informed.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🔒</div>
+      <div class="feature-title">Secure & Private</div>
+      <div class="feature-desc">Your data and location are safe with our encrypted platform.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🤝</div>
+      <div class="feature-title">Community Driven</div>
+      <div class="feature-desc">Empower neighbors to contribute and support each other in times of need.</div>
+    </div>
+  </section>
+
+  <section id="report" class="report-section">
+    <h3>Report an Incident Now</h3>
+    <p>If you witness a disaster or public emergency, don’t hesitate to report it here. Your information can make a difference!</p>
+    <a href="#" class="report-btn" onclick="alert('Redirecting to report form (not implemented)'); return false;">Report Incident</a>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 DisasterWatch. All rights reserved.
+</footer>
+
+</body>
+</html>
